@@ -241,16 +241,15 @@ os.chdir(repoDir)
 determineAllAuthors()
 
 logging.info("Preparing templates...")
-
-#from http://stackoverflow.com/a/6007172/873282
-#required if filenames contain en dash (u2013)
-fs_enc = sys.getfilesystemencoding()
-for dirpath, dirnames, filenames in os.walk(repoDir.encode(fs_enc)):
+ 
+#does not work if filenames contain en dash (u2013).
+#solution posted at http://stackoverflow.com/a/6007172/873282 does not work at Python 3.5 
+for dirpath, dirnames, filenames in os.walk(repoDir):
     #ignore .git directory
-    if b'.git' in dirnames:
-        dirnames.remove(b'.git')
+    if '.git' in dirnames:
+        dirnames.remove('.git')
     for filename in filenames:
-        relPath = os.path.join(dirpath[len(repoDir)+1:].decode(fs_enc), filename.decode(fs_enc))
+        relPath = os.path.join(dirpath[len(repoDir)+1:], filename)
         workOnFile(relPath)
 
 do_release()
