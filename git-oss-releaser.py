@@ -189,7 +189,14 @@ def workOnFile(curFileName):
             targetFiles[i]['name'] = target
 
         #HEAD is needed to avoid scenario described at http://stackoverflow.com/questions/4638500/git-blame-showing-no-history
-        output = subprocess.check_output("git blame -c HEAD \"" + curFileName + "\"", shell=True, universal_newlines = True)
+        #We do not use check_output as everywhere else, because of the following output:
+        #  File "c:\python35\lib\encodings\cp1252.py", line 23, in decode
+        #    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+        #    UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 4776: character maps to <undefined>
+        #We cannot just switch to en_US.UTF-8 as this is not available on Windows
+        #We choose to use UTF-8 instead of surrogateescape (see https://docs.python.org/3/howto/unicode.html), because it feels better
+        output = subprocess.run("git blame -c HEAD \"" + curFileName + "\"", shell=False, stdout=subprocess.PIPE, universal_newlines=False, check=True).stdout.decode("utf-8")
+
         res = StringIO(output)
 
         for line in res:

@@ -6,7 +6,7 @@ The original history is lost.
 
 The motivation is privacy of the developers involved. For instance, code comments made in rage during development should not be made public.
 
-git-oss-releaser is written using [Python 3](https://www.python.org/downloads/).
+git-oss-releaser is written using [Python 3](https://www.python.org/downloads/) and requires at least Python 3.5.
 
 A discussion about this feature is made at [stackoverflow](http://stackoverflow.com/questions/11482925/automatically-rewrite-git-history-for-open-source-release).
 
