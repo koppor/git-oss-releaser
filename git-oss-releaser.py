@@ -214,7 +214,7 @@ def workOnFile(curFileName):
             if authorID in authorIDs:
                 authorNum = authorIDs[authorID]
             else:
-                #if no commiter has been found, add to mapping from id to number
+                #if no committer has been found, add to mapping from id to number
                 author = subprocess.check_output("git --no-pager show -s --format=\"%an <%ae>\" " + commitID, shell=True).decode("utf-8")
                 authorNum = fullAuthors[author]
                 authorIDs[authorID] = authorNum
