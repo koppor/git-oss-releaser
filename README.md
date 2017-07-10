@@ -1,6 +1,7 @@
 # GIT Open Source Releaser
 
 ## About
+
 git-oss-releaser converts a given git repository to a git repository only containing the files of the last commit and commits resembling `git blame` output for each file.
 The original history is lost.
 
@@ -18,6 +19,7 @@ The [commits](https://github.com/ungerts/awesome-bpm/commits/master) from Dec 16
 
 
 ## Usage
+
 usage: `git-oss-releaser.py [-h] repoDir outDir`
 
 Positional arguments:
@@ -44,3 +46,8 @@ DEBUG mode can currently only be enabled in the code.
  * Repository has to contain at least one non-binary file
  * Commit date is derived from non-binary files only
  * Tested under [git for windows](https://git-for-windows.github.io/) only
+
+## Related Projects
+
+* Google's [Copybara](https://github.com/google/copybara) - synchronizes internal git repositories with public git repositories including transformations.
+* Google's [MOE](https://github.com/google/moe) - predecessor of Copybara.
