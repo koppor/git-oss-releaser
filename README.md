@@ -50,4 +50,6 @@ DEBUG mode can currently only be enabled in the code.
 ## Related Projects
 
 * Google's [Copybara](https://github.com/google/copybara) - synchronizes internal git repositories with public git repositories including transformations.
+  > Copybara should do what you want. It is able to filter commits using origin_files and also scrub information from commit message or files (We don't recommend this so that the migration is reversible and you are able to import Pull Requests from your external contributors). We also support several kind of transformations. Mode i) is what we call SQUASH mode and MODE ii) ITERATIVE. CHANGE_REQUEST is the mode that allows to import back contributions from non-source of truth repositories (someone sends you a pull request to the public repo) [Mikel](https://stackoverflow.com/users/293123/mikel) in a comment to a [stackoverflow-question](https://stackoverflow.com/q/11482925/873282).
+
 * Google's [MOE](https://github.com/google/moe) - predecessor of Copybara.
